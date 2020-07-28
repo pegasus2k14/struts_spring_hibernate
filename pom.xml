@@ -19,12 +19,93 @@
   </properties>
 
   <dependencies>
+     <!--Soporte para Spring-->
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-core</artifactId>
+          <version>5.2.8.RELEASE</version>
+      </dependency> 
+      
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-context-support</artifactId>
+          <version>5.2.8.RELEASE</version>
+      </dependency>
+      
+      <!--Soporte para pruebas unitarias -->   
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
+    
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-test</artifactId>
+        <version>5.2.8.RELEASE</version>
+    </dependency>
+    
+    <!-- soporte para Logging -->
+    <dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>1.2.17</version>
+    </dependency>
+    
+    <!--Soporte para AOP-->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-aop</artifactId>
+        <version>5.2.8.RELEASE</version>
+    </dependency>
+    
+    <dependency>
+        <groupId>org.aspectj</groupId>
+        <artifactId>aspectjrt</artifactId>
+        <version>1.9.6</version>
+    </dependency>
+    
+    <dependency>
+        <groupId>org.aspectj</groupId>
+        <artifactId>aspectjweaver</artifactId>
+        <version>1.9.6</version>
+    </dependency>
+    
+    <dependency>
+        <groupId>cglib</groupId>
+        <artifactId>cglib</artifactId>
+        <version>3.3.0</version>
+    </dependency>
+    
+    <!--Soporte para Spring JDBC-->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-jdbc</artifactId>
+        <version>5.2.8.RELEASE</version>
+    </dependency>
+    
+    <!--Soporte para base de datos H2-->
+    <dependency>
+        <groupId>com.h2database</groupId>
+        <artifactId>h2</artifactId>
+        <version>1.4.200</version>
+    </dependency>
+    
+    <!--Soporte  para Hibernate-->
+    <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-entitymanager</artifactId>
+        <version>5.4.18.Final</version>
+    </dependency>
+    
+    <!--Soporte para Spring ORM-->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-orm</artifactId>
+        <version>5.2.8.RELEASE</version>
+    </dependency>
+    
   </dependencies>
 
   <build>
