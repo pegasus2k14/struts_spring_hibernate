@@ -5,5 +5,5 @@ create table persona(
   nombre varchar(50) not null,
   ape_paterno varchar(50) not null,
   ape_materno varchar(50) not null,
-  email varchar(50) not null
+  email varchar(50) not null unique
 );

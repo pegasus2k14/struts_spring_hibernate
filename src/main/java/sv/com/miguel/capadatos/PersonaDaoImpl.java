@@ -1,6 +1,8 @@
 package sv.com.miguel.capadatos;
 
 import java.util.List;
+import javax.persistence.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -15,46 +17,54 @@ public class PersonaDaoImpl implements PersonaDao{
     
     //inyectamos una instancia de SessionFactory desde el contenedor de Spring
     @Autowired
-    private void PersonaDaoImpl(SessionFactory sessionFactory){
+    public PersonaDaoImpl(SessionFactory sessionFactory){
         this.sessionFactory = sessionFactory;
     }
     
-    //Se necesita de una transaccion activa por ello la prueba unitaria
-    //utiliza @transactional
+   
+   //Metodo que retorna una instancia de la Session actual o activa a partir del
+    //SessionFactory
+    public Session getCurrentSession(){
+        return sessionFactory.getCurrentSession();
+    }
+    
 
     @Override
     public void insertarPersona(Persona persona) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        getCurrentSession().saveOrUpdate(persona);
     }
 
     @Override
     public void updatePersona(Persona persona) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        getCurrentSession().saveOrUpdate(persona);
     }
 
     @Override
     public void deletePersona(Persona persona) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        getCurrentSession().delete(persona);
     }
 
     @Override
     public Persona findPersonaById(long idPersona) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return getCurrentSession().get(Persona.class, idPersona);
     }
 
     @Override
     public List<Persona> findAllPersonas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return getCurrentSession().createQuery("FROM Persona").list();
     }
 
     @Override
     public long contadorPersonas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Query q = getCurrentSession().createQuery("select count(p) from Persona p");
+        return (long) q.getSingleResult();
     }
 
     @Override
     public Persona getPersonaByEmail(Persona persona) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String email = persona.getEmail();
+        Query q = getCurrentSession().createQuery("Select p from Persona p where p.nombre =:email");
+        return (Persona) q.getSingleResult();
     }
     
 }
