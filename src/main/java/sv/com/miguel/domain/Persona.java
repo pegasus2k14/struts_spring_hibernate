@@ -19,6 +19,7 @@ public class Persona {
     private String apePaterno;
     @Column(name = "ape_materno")
     private String apeMaterno;
+    @Column(name = "email")
     private String email;
     
     //Constructores

@@ -62,8 +62,8 @@ public class PersonaDaoImpl implements PersonaDao{
 
     @Override
     public Persona getPersonaByEmail(Persona persona) {
-        String email = persona.getEmail();
-        Query q = getCurrentSession().createQuery("Select p from Persona p where p.nombre =:email");
+        Query q = getCurrentSession().createQuery("Select p from Persona p where p.email =:email");
+        q.setParameter("email", persona.getEmail());
         return (Persona) q.getSingleResult();
     }
     
